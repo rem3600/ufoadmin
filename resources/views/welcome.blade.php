@@ -6,6 +6,9 @@
 
         <title>Laravel</title>
 
+        <!-- Bootstrap cdn link -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -45,7 +48,7 @@
                     </svg>
                 </div>
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div class="mt-8 dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
                             <div class="flex items-center">
@@ -73,6 +76,10 @@
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                     Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
                                 </div>
+                                <form action="{{ route('upload') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" name="file" class="form-control">
+                                    <input type="submit" value="Upload" name="submit" class="btn btn-primary mt-2">	
                             </div>
                         </div>
 

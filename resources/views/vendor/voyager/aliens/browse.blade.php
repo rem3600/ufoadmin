@@ -1,5 +1,12 @@
 @extends('voyager::master')
 
+<style>
+    input.start-end-date {
+        width: 50%;
+        margin-bottom: 10px;
+    }
+</style>
+
 @section('page_title', __('voyager::generic.viewing').' '.$dataType->getTranslatedAttribute('display_name_plural'))
 
 @section('page_header')
@@ -19,6 +26,16 @@
             <a href="{{ route('export') }}" class="btn btn-warning btn-add-new">
                 <i class="voyager-paper-plane"></i> <span>Export data</span>
             </a>
+
+            <form action="{{ route('export3') }}" method="post">
+                @csrf
+                <label for="startDate">Start date</label>
+                <input type="date" name="startDate" class="form-control start-end-date">
+                <label for="endDate">End date</label>
+                <input type="date" name="endDate" class="form-control start-end-date">
+
+                <input type="submit" value="Export" class="btn btn-warning btn-add-new">
+            </form>
         @endcan
 
         @can('edit', app($dataType->model_name))
